@@ -1,0 +1,7 @@
+tf-keras
+deepface
+tkinter
+opencv
+requests
+pillow
+threding
