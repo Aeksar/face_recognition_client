@@ -4,4 +4,3 @@ tkinter
 opencv
 requests
 pillow
-threding

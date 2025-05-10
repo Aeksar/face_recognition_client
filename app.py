@@ -3,10 +3,13 @@ from tkinter import messagebox, filedialog
 import cv2 as cv
 from PIL import Image, ImageTk
 from datetime import datetime
-from api_logic import ApiLogic
 import requests
-from logs import  logging
 import json
+import re
+
+from logs import  logging
+from api_logic import ApiLogic
+from utils import transliterate
 
 
 class App(ApiLogic):
@@ -53,7 +56,9 @@ class App(ApiLogic):
             resp: requests.Response = self.task.result(timeout=3)
             data = resp.json()
             if resp.status_code == 200:
-                surname, name = data["name"].split("_")
+                surname, name = transliterate(data["name"], "en2ru").split("_")
+                name = name[0].upper() + name[1:]
+                surname = surname[0].upper() + surname[1:]
                 messagebox.showinfo("Пользователь найден", f"Добро пожаловать\n{name} {surname}")
             elif resp.status_code == 404:
                 messagebox.showwarning("Неизвестный пользователь", "Отказано в доступе")
@@ -88,6 +93,8 @@ class App(ApiLogic):
     def add_user(self):
         filename = self.filename.get()
         name = "_".join([self.name_entry.get(), self.surname_entry.get()])
+        if not re.match(r"[А-я]", name):
+            name = transliterate(name, "ru2en")
         file = cv.imread(filename)
         file = self.frame2bytes(file)
         resp = self.add_face(name, file)
