@@ -29,7 +29,7 @@ class App(ApiLogic):
         
         self.width = self.cap.get(cv.CAP_PROP_FRAME_WIDTH)
         self.height = self.cap.get(cv.CAP_PROP_FRAME_HEIGHT)
-        self.styles = Styles(Themes.DARK)
+        self.styles = Styles(Themes.PASTEL)
         
         self.photo = None
         self.delay = 15

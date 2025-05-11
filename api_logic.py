@@ -7,7 +7,7 @@ import requests
 from deepface import DeepFace
 from numpy import ndarray
 
-from base import ApiHandler
+from api_base import ApiHandler
 
 
 logger = logging.getLogger(__name__)
