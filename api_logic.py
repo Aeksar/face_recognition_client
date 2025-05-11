@@ -26,10 +26,10 @@ class ApiLogic(ApiHandler):
         self.face_detector = cv.CascadeClassifier("models/face_alt.xml")
 
     def frame2bytes(self, frame: MatLike):
-        logger.debug("Image saved")
         return cv.imencode(".jpg", frame)[1].tobytes()
 
     def screenshot(self):
+        logger.debug("Image saved")
         ok, frame = self.cap.read()
         if ok:
             cv.imwrite("screenshot.jpg", frame)
