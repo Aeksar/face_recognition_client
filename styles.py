@@ -9,7 +9,6 @@ logger = logging.getLogger(__name__)
 class Themes:
     LIGHT = "light"
     DARK = "dark"
-    PASTEL = "pastel"
 
 
 class Styles:
@@ -44,7 +43,7 @@ class Styles:
             "dark": {
                 "Main.TFrame": {"background": "#2C2F33"},
                 "TButton": {
-                    "background": "#7289DA",
+                    "background": "#4D3E59",
                     "foreground": "#DCDDDE",
                     "font": ("Helvetica", 10, "bold"),
                     "padding": 10,
@@ -65,30 +64,6 @@ class Styles:
                 },
                 "window_bg": "#2C2F33"
             },
-            "pastel": {
-                "Main.TFrame": {"background": "#FAF3F3"},
-                "TButton": {
-                    "background": "#A8E6CF",
-                    "foreground": "#264653",
-                    "font": ("Helvetica", 10, "bold"),
-                    "padding": 10,
-                    "borderwidth": 0
-                },
-                "TButton.map": {"background": [("active", "#CFFFD6")]},
-                "TLabel": {
-                    "background": "#FAF3F3",
-                    "foreground": "#264653",
-                    "font": ("Helvetica", 10)
-                },
-                "TEntry": {
-                    "fieldbackground": "#FFE6E6",
-                    "foreground": "#264653",
-                    "font": ("Helvetica", 10),
-                    "borderwidth": 1,
-                    "relief": "solid"
-                },
-                "window_bg": "#FAF3F3"
-            }
         }
         self.apply_theme(theme_name)
 

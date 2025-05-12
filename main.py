@@ -7,4 +7,5 @@ import asyncio
 if __name__ == "__main__":
     root = Tk()
     app = App(root)
+    root.title("Face Recognition")
     root.mainloop()
