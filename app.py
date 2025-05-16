@@ -12,7 +12,7 @@ from api_logic import ApiLogic
 from utils import transliterate
 from styles import Styles, Themes
 from add_form import AddForm
-
+from log_window import LogWindow
 
 logger = logging.getLogger(__name__)
 
@@ -46,20 +46,21 @@ class App(ApiLogic):
         self.button_frame = ttk.Frame(self.frame, style="Main.TFrame")
         self.button_frame.pack(side="top", fill="y", padx=10, pady=10)
         
+        
         self.btn_snapshot = ttk.Button(self.button_frame, text="Скриншот", command=self.screenshot, width=15)
         self.btn_snapshot.pack(side="top", pady=5)
         self.btn_add = ttk.Button(self.button_frame, text="Добавить\nпользователя", command=self.open_add_window, width=15)
         self.btn_add.pack(side="top", pady=5)
+        self.btn_log = ttk.Button(self.button_frame, text="Журнал\nдоступа", command=self.open_log_window, width=15)
+        self.btn_log.pack(side="bottom", pady=5)
         self.btn_chache_theme = ttk.Button(self.button_frame, text="Сменить тему", width=15, command=self.change_theme)
         self.btn_chache_theme.pack(side="bottom", pady=5)
         
     def change_theme(self):
         if self.theme == Themes.DARK: 
             self.theme = Themes.LIGHT   
-            
         elif self.theme == Themes.LIGHT:
             self.theme = Themes.DARK
-            
         self.styles.apply_theme(self.theme)
 
     def update(self):
@@ -85,7 +86,7 @@ class App(ApiLogic):
                 surname, name = transliterate(data["name"], "en2ru").split("_")
                 name = name[0].upper() + name[1:]
                 surname = surname[0].upper() + surname[1:]
-                logger.info(f"Найден пользователь {name}, {surname}")
+                logger.info(f"Найден пользователь {name} {surname}")
                 messagebox.showinfo("Пользователь найден",
                                     f"Добро пожаловать\n{name} {surname}",
                                     parent=self.window)
@@ -105,7 +106,12 @@ class App(ApiLogic):
     def open_add_window(self):
         self.is_running = False
         self.window.withdraw()
-        AddForm(self.window, self.styles, self.back_to_root)
+        AddForm(self.window, self.back_to_root)
+        
+    def open_log_window(self):
+        self.is_running = False
+        self.window.withdraw()
+        LogWindow(self.window, self.back_to_root)        
 
     def back_to_root(self):
         self.is_running = True

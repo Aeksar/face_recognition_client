@@ -12,20 +12,19 @@ from styles import Styles
 logger = logging.getLogger(__name__)
 
 class AddForm(ApiLogic):
-    def __init__(self, root_window: tk.Tk, styles: Styles, on_close: Callable[[None], None]):
+    def __init__(self, root_window: tk.Tk, on_close: Callable[[], None]):
         self.root_window = root_window
-        self.styles = styles
         self.on_close = on_close
         self.window = None
         self.filename = None
         self.create_window()
 
     def create_window(self):
+        print(self.add_url)
         self.window = tk.Toplevel(self.root_window)
         self.window.title("Добавить пользователя")
         self.window.configure(bg="#F5F5F5")
         self.window.geometry("400x250")
-        self.window.resizable(False, False)
 
         form_frame = ttk.Frame(self.window, padding=20, style="Main.TFrame")
         form_frame.pack(fill="both", expand=True)

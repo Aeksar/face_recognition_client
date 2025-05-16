@@ -13,6 +13,7 @@ def transliterate(text: str, direction='en2ru'):
     i = 0
     text = text.lower()
 
+    
     if direction == 'en2ru':
         while i < len(text):
             if i + 1 < len(text) and text[i:i+2] in en2ru:
@@ -25,5 +26,8 @@ def transliterate(text: str, direction='en2ru'):
         while i < len(text):
             result += ru2en.get(text[i], text[i])
             i += 1
+
+        result = result.replace("ъ", "")
+        result = result.replace("ь", "")        
 
     return result

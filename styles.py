@@ -38,6 +38,17 @@ class Styles:
                     "borderwidth": 1,
                     "relief": "solid"
                 },
+                "Treeview": {
+                    "background": "#FFFFFF",
+                    "foreground": "#333333",
+                    "fieldbackground": "#FFFFFF",
+                    "font": ("Helvetica", 10)
+                },
+                "Treeview.Heading": {
+                    "background": "#34495E",
+                    "foreground": "#FFFFFF",
+                    "font": ("Helvetica", 10, "bold")
+                },
                 "window_bg": "#F5F5F5"
             },
             "dark": {
@@ -61,6 +72,17 @@ class Styles:
                     "font": ("Helvetica", 10),
                     "borderwidth": 1,
                     "relief": "solid"
+                },
+                "Treeview": {
+                    "background": "#40444B",
+                    "foreground": "#DCDDDE",
+                    "fieldbackground": "#40444B",
+                    "font": ("Helvetica", 10)
+                },
+                "Treeview.Heading": {
+                    "background": "#7289DA",
+                    "foreground": "#DCDDDE",
+                    "font": ("Helvetica", 10, "bold")
                 },
                 "window_bg": "#2C2F33"
             },

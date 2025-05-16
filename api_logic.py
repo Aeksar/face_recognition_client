@@ -4,8 +4,7 @@ from datetime import datetime, timedelta
 import logging
 from concurrent.futures import ThreadPoolExecutor
 import requests
-from deepface import DeepFace
-from numpy import ndarray
+from datetime import datetime
 
 from api_base import ApiHandler
 
@@ -68,6 +67,8 @@ class ApiLogic(ApiHandler):
             logger.error(f"Ошибка в get_face {e}")
         finally:
             self.task = None
+            
+
     
     
         
@@ -91,8 +92,8 @@ class ApiLogic(ApiHandler):
     #                     js = await response.json()
     #                     print(js)
 
-    def __del__(self):
-        if self.cap.isOpened():
-            self.cap.release()
-        self.thread_pool.shutdown(wait=True)
+    # def __del__(self):
+    #     if self.cap.isOpened():
+    #         self.cap.release()
+    #     self.thread_pool.shutdown(wait=True)
         # asyncio.run(self.session.close())
